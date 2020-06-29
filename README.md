@@ -1,6 +1,6 @@
 # PAGINATOR
 
-Lib para manipulação de dados. Contém:
+Lib para manipulação de dados JSON. Contém:
 
 ## Paginador
 
@@ -22,6 +22,32 @@ Lib para manipulação de dados. Contém:
     -   https://servidor/rota?page=2&items_per_page=5
 
     -   https://servidor/rota?page=1
+```
+
+-   Exemplo de codificação
+
+```
+const paginator = require('@serverRoot/helpers/paginator');
+
+// Executa query ou queries
+const resultSet = {
+	"recordset": [
+		{
+			...
+		},
+		{
+			...
+		},
+		{
+			...
+		}
+	],
+	"rowsAffected": 3
+ };
+
+const pagedResultSet = paginator.setPage(req, resultSet, resultSet.recordset, resultSet.rowsAffected, true);
+
+return pagedResultSet;
 ```
 
 -   Observações: **page** é obrigatório nas rotas paginadas; **items\_per\_page** se não informado recebe valor default 10
@@ -46,6 +72,34 @@ Lib para manipulação de dados. Contém:
     -   https://servidor/rota?sort_fields=nome
 ```
 
+-   Exemplo de codificação
+
+```
+const paginator = require('@serverRoot/helpers/paginator');
+
+// Executa query ou queries
+const resultSet = {
+	"recordset": [
+		{
+			...
+		},
+		{
+			...
+		},
+		{
+			...
+		}
+	],
+	"rowsAffected": 3
+ };
+
+// Ordena e pagina na sequencia
+resultSet.recordset = paginator.setSort(req, resultSet.recordset, true);
+const pagedResultSet = paginator.setPage(req, resultSet, resultSet.recordset, resultSet.rowsAffected);
+
+return pagedResultSet;
+```
+
 -   Observações 1: **sort\_fields** é obrigatório nas rotas ordenadas; **sort\_case\_insensitive** se não informado recebe valor default false; no exemplo acima com duas chaves de ordenação, a massa de dados é primeiramente ordenada por *tipo* e então por *nome*; **sort\_fields** pode receber também como indicador de valor true as opções yes / y / sim / s
 
 -   Observações 2: o padrão é utilizar sempre camelCase exato (case sensitive) para identificar os campos nas chaves em **sort\_fields**. Verificar com o back-end essa regra para cada rota
@@ -57,3 +111,31 @@ Lib para manipulação de dados. Contém:
 -   Nomes nos objetos de **SNAKE\_CASE** para **camelCase**
 
 -   Nomes tabulados nos objetos para nomes aninhados nos objetos. Ex: { 'a.b.c': 1 } para { a: { b: { c: 1 } } }
+
+-   Exemplo de codificação
+
+```
+const paginator = require('@serverRoot/helpers/paginator');
+
+// Executa query ou queries
+const resultSet = {
+	"recordset": [
+		{
+			...
+		},
+		{
+			...
+		},
+		{
+			...
+		}
+	],
+	"rowsAffected": 3
+ };
+
+resultSet.recordset = paginator.keysToCamelCase(resultSet.recordset);
+
+return resultSet;
+```
+
+-   Observações: apenas UM toCamelCase é necessário em todas as chamadas. conversão toCamelCase existe também nos métodos setPage e setSort
