@@ -1,6 +1,6 @@
 # PAGINATOR
 
-Biblioteca para manipulação de dados JSON. Contém:
+Biblioteca para manipulação de dados JSON
 
 ## Paginador
 
