@@ -9,7 +9,7 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
-    "eslint": "^7.3.1"
+    "eslint": "^7.4.0"
   },
   "repository": {
     "type": "git",
