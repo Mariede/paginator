@@ -12,11 +12,11 @@
     "node": ">=10.5.0"
   },
   "dependencies": {
-    "date-fns": "^2.21.3",
+    "date-fns": "^2.22.1",
     "xml2js": "^0.4.23"
   },
   "devDependencies": {
-    "eslint": "^7.26.0",
+    "eslint": "^7.28.0",
     "eslint-plugin-node": "^11.1.0"
   },
   "repository": {
