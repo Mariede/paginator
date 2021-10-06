@@ -112,6 +112,8 @@ return pagedResultSet;
 
 -   Nomes tabulados nos objetos para nomes aninhados nos objetos. Ex: { 'a.b.c': 1 } para { a: { b: { c: 1 } } }
 
+-   Se existir **keysXmlToJson** no formato array de objetos, converte dados XML relacionados para JSON
+
 -   Exemplo de codificação
 
 ```
