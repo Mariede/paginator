@@ -45,7 +45,7 @@ const resultSet = {
 	"rowsAffected": 3
  };
 
-const pagedResultSet = paginator.setPage(req, resultSet, resultSet.recordset, resultSet.rowsAffected, true);
+const pagedResultSet = paginator.setPage(req, resultSet, resultSet.recordset, resultSet.rowsAffected);
 
 return pagedResultSet;
 ```
@@ -94,7 +94,7 @@ const resultSet = {
  };
 
 // Ordena e pagina na sequencia
-resultSet.recordset = paginator.setSort(req, resultSet.recordset, true);
+resultSet.recordset = paginator.setSort(req, resultSet.recordset);
 const pagedResultSet = paginator.setPage(req, resultSet, resultSet.recordset, resultSet.rowsAffected);
 
 return pagedResultSet;
@@ -139,5 +139,3 @@ resultSet.recordset = paginator.keysToCamelCase(resultSet.recordset);
 
 return resultSet;
 ```
-
--   Observações: apenas UM toCamelCase é necessário em todas as chamadas. conversão toCamelCase existe também nos métodos setPage e setSort
